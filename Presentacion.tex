@@ -23,9 +23,10 @@
 \usepackage{hyperref}
 \usepackage{titlesec}
 \usepackage{etoc}
-\usepackage[type={CC}, modifier={by}, version={4.0}]{doclicense}
+\usepackage[type={CC}, modifier={by-nc}, version={4.0}]{doclicense}
 \usepackage{pdfpages}
 \usepackage{outlines}
+\usepackage{etoolbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%% Variables del documento %%%%%%%%%%%%%%%%%%
@@ -40,30 +41,38 @@
 \hypersetup
 {
     colorlinks=true,
-    linkcolor=black,
+    linkcolor=blue,
     filecolor=blue,      
     urlcolor=blue,
+    citecolor=blue,
+    pdftitle={\titulodocumento}
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%% Configuracion de pagina %%%%%%%%%%%%%%%%%%%
-\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%% Configuracion de paginas %%%%%%%%%%%%%%%%%%%
+\etocsettocstyle{}{}
+
+\pagestyle{empty}
+
+\patchcmd{\chapter}{plain}{empty}{}{}
+
 \setlength{\headheight}{15pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% Cabecera y pie de pagina %%%%%%%%%%%%%%%%%%
+\fancyhead[R]{\autordocumento}
+\fancyhead[L]{Capítulo \thechapter}
+
+\fancyfoot[C]{Página \thepage}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%% Información del documento %%%%%%%%%%%%%%%%%%
 \title{\titulodocumento}
 \author{\autordocumento}
 \date{\fechadocumento}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%% Cabecera y pie de pagina %%%%%%%%%%%%%%%%%%
-\fancyhead[R]{\autordocumento}
-\fancyhead[L]{Capítulo \thechapter}
-\renewcommand{\headrulewidth}{0.5pt}
-
-\fancyfoot[C]{\thepage}
-\renewcommand{\footrulewidth}{0.5pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%% Inicio del documento %%%%%%%%%%%%%%%%%%%%
@@ -73,16 +82,14 @@
 \begin{titlepage}
     \begin{center}
         \vspace*{\fill}
-
-        \Huge{\titulodocumento \\}
+        {\Huge{\titulodocumento \\}}
         \vspace{0.25cm}
-        \large{\subtitulodocumento \\}
+        {\large{\subtitulodocumento \\}}
         \vspace{2cm}
         {\includegraphics[scale=0.35]{\logodocumento} \\}
         \vspace{2cm}
-        \large{Autor: \autordocumento \\}
-        \large{Última modificación: \fechadocumento}
-
+        {\large{Autor: \autordocumento \\}}
+        {\large{Última modificación: \fechadocumento}}
         \vspace*{\fill}
     \end{center}
 \end{titlepage}
@@ -94,19 +101,23 @@
 % Informacion adicional
 \input{src/latex/Informacion_adicional.tex}
 
+% Lista de tareas pendientes
+\input{src/latex/Pendiente.tex}
+
 % Indice
+\newpage
+\section*{Contenido global}
 \tableofcontents
-\thispagestyle{empty}
-\etocsettocstyle{}{}
+\newpage
 
 % Desarrollo del trabajo
 \setcounter{page}{1}
-	
-% Capítulos
+
+% Capitulos
 \input{src/latex/Capitulo1.tex}
 
-% Referencias bibliograficas
-\input{src/latex/Bibliografia.tex}
+% Referencias
+\input{src/latex/Referencias.tex}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
