@@ -1,0 +1,47 @@
+\chapter{Capítulo de ejemplo}
+
+\pagestyle{empty}
+
+\hrule
+\vspace*{0.3cm}
+\localtableofcontents
+\vspace*{0.3cm}
+\hrule
+
+\section*{Descripción del capítulo}
+
+Descripción
+
+\newpage
+
+\pagestyle{fancy}
+
+\section{Sección}
+
+Este capítulo es para mostrarle como es la plantilla \cite{EXAMPLE_BOOK}.
+
+\subsection{Subsección}
+
+Puede hacer cajas de colores:
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Aca iría el título]
+    Y bueno aca el contenido de la caja jajajaj.
+\end{tcolorbox}
+
+\subsubsection{Subsubsección}
+
+Tambíen pude definir tipos de cajas para reutilizarlos:
+
+\newtcbtheorem[auto counter,number within=section]{theo}%
+    {Teorema}{fonttitle=\bfseries\upshape, fontupper=\slshape,
+    arc=0mm, colback=blue!5!white,colframe=blue!75!black}{teorema}
+
+\begin{theo}{Sumatoria de números}{id_para_reconocer}
+    Para todo $n$ natural:
+
+    \begin{equation}
+        \sum\limits_{i=1}^n i = \frac{n(n+1)}{2}
+    \end{equation}
+\end{theo}
+
+Luego decimos que en \ref{teorema:id_para_reconocer} esta el secreto del universo.

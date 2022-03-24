@@ -27,13 +27,14 @@
 \usepackage{pdfpages}
 \usepackage{outlines}
 \usepackage{etoolbox}
+\usepackage{tcolorbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%% Variables del documento %%%%%%%%%%%%%%%%%%
 \newcommand{\titulodocumento}{Título del documento}
 \newcommand{\subtitulodocumento}{Subtítulo del documento}
-\newcommand{\logodocumento}{src/images/doc/Logo.png}
-\newcommand{\autordocumento}{Gabriel Andrés Aguirre}
+\newcommand{\logodocumento}{src/imagenes/doc/logo.png}
+\newcommand{\autordocumento}{Nombre y apellido}
 \newcommand{\fechadocumento}{\today}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -47,6 +48,10 @@
     citecolor=blue,
     pdftitle={\titulodocumento}
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% Configuracion de cajas %%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{listings,theorems,most}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%% Configuracion de paginas %%%%%%%%%%%%%%%%%%%
@@ -88,7 +93,7 @@
         \vspace{2cm}
         {\includegraphics[scale=0.35]{\logodocumento} \\}
         \vspace{2cm}
-        {\large{Autor: \autordocumento \\}}
+        {\large{Autores: \autordocumento \\}}
         {\large{Última modificación: \fechadocumento}}
         \vspace*{\fill}
     \end{center}
@@ -96,13 +101,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Aviso
-\input{src/latex/Aviso.tex}
+\input{src/latex/aviso.tex}
 
 % Informacion adicional
-\input{src/latex/Informacion_adicional.tex}
-
-% Lista de tareas pendientes
-\input{src/latex/Pendiente.tex}
+\input{src/latex/informacion_adicional.tex}
 
 % Indice
 \newpage
@@ -114,10 +116,12 @@
 \setcounter{page}{1}
 
 % Capitulos
-\input{src/latex/Capitulo1.tex}
+\input{src/latex/capitulo_template.tex}
 
 % Referencias
-\input{src/latex/Referencias.tex}
+\bibliography{src/referencias/bibliography}
+\bibliographystyle{unsrt}
+\nocite{*}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
