@@ -28,6 +28,15 @@
 \usepackage{outlines}
 \usepackage{etoolbox}
 \usepackage{tcolorbox}
+\usepackage{afterpage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Comandos %%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%% Variables del documento %%%%%%%%%%%%%%%%%%
@@ -101,15 +110,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Aviso
+\afterpage{\blankpage}
 \input{src/latex/aviso.tex}
 
 % Informacion adicional
 \input{src/latex/informacion_adicional.tex}
 
 % Indice
+\afterpage{\blankpage}
 \newpage
-\section*{Contenido global}
+\section*{Contenido}
 \tableofcontents
+\afterpage{\blankpage}
 \newpage
 
 % Desarrollo del trabajo
@@ -119,6 +131,7 @@
 \input{src/latex/capitulo_template.tex}
 
 % Referencias
+\afterpage{\blankpage}
 \newpage
 \pagestyle{empty}
 
