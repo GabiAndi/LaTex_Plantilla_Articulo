@@ -29,6 +29,7 @@
 \usepackage{etoolbox}
 \usepackage{tcolorbox}
 \usepackage{afterpage}
+\usepackage{appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Comandos %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,9 +114,6 @@
 \afterpage{\blankpage}
 \input{src/latex/aviso.tex}
 
-% Informacion adicional
-\input{src/latex/informacion_adicional.tex}
-
 % Indice
 \afterpage{\blankpage}
 \newpage
@@ -127,12 +125,29 @@
 % Desarrollo del trabajo
 \setcounter{page}{1}
 
-% Capitulos
-\input{src/latex/capitulo_template.tex}
-
-% Referencias
+% Introducción
+\input{src/latex/sobre_el_documento.tex}
+\newpage
+\afterpage{\blankpage}
+\input{src/latex/abstract.tex}
 \afterpage{\blankpage}
 \newpage
+
+% Capitulos
+\input{src/latex/capitulo_template.tex}
+\afterpage{\blankpage}
+\newpage
+
+% Anexos
+\appendix
+\input{src/latex/planos_y_diagramas.tex}
+\afterpage{\blankpage}
+\newpage
+\input{src/latex/desarrollos_complementarios.tex}
+\afterpage{\blankpage}
+\newpage
+
+% Referencias
 \pagestyle{empty}
 
 \bibliography{src/referencias/bibliography}
